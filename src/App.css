@@ -1,32 +1,20 @@
-.App {
-  text-align: center;
+#center {
+
+    width: 500px; /* Ширина элемента в пикселах */
+
+    padding: 10px; /* Поля вокруг текста */
+    margin: auto; /* Выравниваем по центру */
+    background-image: url(Background.jpg); /* Цвет фона */
+
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-}
+.Yellowbutton,.Redbutton,.Bluebutton,.Greenbutton{
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+    padding:10px;
+    margin-left: 10px;
+    border-radius: 10px;
+    color: black;
 }
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+#change_level, #reset_button, #go_play{
+    margin-left: 10px;
+    padding: 10px;}
