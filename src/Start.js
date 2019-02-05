@@ -7,10 +7,6 @@ import Round_start from './Round_Start.js'
 class Start extends Component {
     constructor(props) {
         super(props);
-this.state={
-    IsEnable:false
-}
-
 
         this.audio = new Audio(global[0].audio);
 
@@ -26,13 +22,13 @@ this.state={
     render() {
 
         return (
-            <button disabled={this.state.IsEnable} id='go_play' onClick={this.timer_func}>Start</button>
+            <button disabled={this.props.updateStart_button} id='go_play' onClick={this.timer_func}>Start</button>
         )
     }
     handleStartBlink = () =>{
         let properties = this.props;
+        properties.Startagain(this.timer_func);
         let blink = Blinking();
-
         properties.updateData(blink);
         this.togglePlay();
         Round_start(blink);
@@ -47,9 +43,10 @@ this.state={
         let properties = this.props;
         properties.updateButton_enable(true);
         properties.updateReset_enable(true);
-        properties.updateText('Waiting');
+        properties.updateText('Remember combination!');
         properties.updateMusic(false);
-        this.setState({IsEnable:true});
+        this.props.updateStart_next(true);
+
         var timer = setInterval(this.handleStartBlink, 3000-global[0].difficult);
 
         setTimeout(function() {
