@@ -72,6 +72,7 @@ class App extends Component{
 
         <div id="center" style={{ 'text-align': 'center' }}>
             <Buttons blink_but={this.state.isStart} updateButton_enable={this.state.isButton}
+                     updateButton_enable_again={this.updateButton_enable}
                      updateReset_enable={this.updateReset_enable} updateStart_button={this.updateStart_button}
                      updateText={this.updateText} Startagain={this.state.Startnew}/>
             <br />

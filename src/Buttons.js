@@ -18,7 +18,7 @@ const Button = ({ className, children, onClick, color, disabled }) => (
 class Buttons extends Component{
     constructor(props){
         super(props);
-
+        this.audioBut = new Audio(require('./beep.wav'));
 }
 
 render() {
@@ -39,7 +39,7 @@ let change = this.props;
 }
 
     User_Start(color){
-
+        this.audioBut.play();
         global[0].tries++;
         if(global[0].tries<global[0].round+global[0].next_level){
             //console.log(color,'-----');
@@ -75,6 +75,7 @@ let change = this.props;
         }
         if(win!==false){
             //console.log('Right');
+            properties.updateButton_enable_again(true);
             global[0].res_user=[];
             global[0].user_mas=[];
             global[0].tries=0;
@@ -95,6 +96,7 @@ let change = this.props;
         let properties = this.props;
         properties.updateStart_button(false);
         properties.updateReset_enable(true);
+        properties.updateButton_enable_again(true);
         properties.updateText(`Sorry you lose. You have earned ${global[0].points===1? '1point' : global[0].points+'points'}. Press start to try again.`);
 
         global[0].res_user=[];
