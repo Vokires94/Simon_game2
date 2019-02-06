@@ -43,29 +43,51 @@ class Start extends Component {
         let properties = this.props;
         properties.updateButton_enable(true);
         properties.updateReset_enable(true);
-        properties.updateText('Remember combination!');
+        this.waiting(this.handleStartBlink);
+        // properties.updateText('Remember combination!');
         properties.updateMusic(false);
         this.props.updateStart_next(true);
 
-        var timer = setInterval(this.handleStartBlink, 3000-global[0].difficult);
 
-        setTimeout(function() {
-            clearInterval(timer)}, 15000+global[0].next_level*3000-global[0].difficult*(global[0].round+global[0].next_level));
+    }
 
-        setTimeout(() => {
+    waiting =(e)=>{
+        let properties = this.props;
+        function timer (seconds, tick, result) {
+            if (seconds > 0) {
+                tick(seconds);
+                seconds -= 1;
+                setTimeout(function () {
+                    timer(seconds, tick, result);
+                }, 1000);
+            } else {
+                result();
+            }
+        }
+        timer(3, function (s) {
+            properties.updateText(`Get ready ${s>1 ? s + 'seconds': s+'second'}`);
 
-            properties.updateButton_enable(false);
+        }, function () {
+            properties.updateText('Remember combination!');
+            var timer = setInterval(e, 3000-global[0].difficult);
 
-            properties.updateReset_enable(false);
+            setTimeout(function() {
+                clearInterval(timer)}, 15000+global[0].next_level*3000-global[0].difficult*(global[0].round+global[0].next_level));
 
-            properties.updateText('Tip chosen buttons');
+            setTimeout(() => {
 
-            properties.updateMusic(true);
+                properties.updateButton_enable(false);
+
+                properties.updateReset_enable(false);
+
+                properties.updateText('Tip chosen buttons');
+
+                properties.updateMusic(true);
 
 
 
-        }, 17000+global[0].next_level*3000-global[0].difficult*(5+global[0].next_level));
-
+            }, 17000+global[0].next_level*3000-global[0].difficult*(5+global[0].next_level));
+        });
     }
 }
 
