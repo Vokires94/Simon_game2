@@ -16,7 +16,7 @@ class App extends Component{
         this.audio2.loop=true;
 
         this.state = {
-
+            onPlay:this.audio2.muted=false,
             isStart:'pink',
             isText:'Let\'s play. Click on Start.',
             isReset:true,
@@ -70,7 +70,7 @@ class App extends Component{
 
         return(
 
-        <div id="center" style={{ 'text-align': 'center' }}>
+        <div id="center" style={{ 'text-align': 'center' }} >
             <Buttons blink_but={this.state.isStart} updateButton_enable={this.state.isButton}
                      updateButton_enable_again={this.updateButton_enable}
                      updateReset_enable={this.updateReset_enable} updateStart_button={this.updateStart_button}
@@ -94,9 +94,14 @@ class App extends Component{
             <Change_level/>
             <Reset disabled={this.state.isReset} updateReset_enable={this.updateReset_enable}
                    updateStart_button={this.updateStart_button} updateText={this.updateText}/>
+            <button id='Music_mute' style={this.state.onPlay?{textDecoration:'line-through'} : {textDecoration:'none'}} onClick={this.play_mute}>{this.state.onPlay? 'Unmute' : 'Mute'}</button>
 
         </div>
         )
+    }
+
+    play_mute=()=>{
+        this.audio2.muted===false? this.setState({onPlay:this.audio2.muted=true}) : this.setState({onPlay:this.audio2.muted=false})
     }
 }
 

@@ -18,6 +18,10 @@ button:focus {outline:0;}
 #change_level, #reset_button, #go_play{
     margin-left: 10px;
     padding: 10px;}
+#Music_mute{
+    margin-left: 10px;
+    padding: 10px;
+}
 
 .Yellowbutton:active,.Redbutton:active,.Bluebutton:active,.Greenbutton:active {
     background: rgb(167, 83, 151) linear-gradient(rgb(167, 83, 151), rgb(167, 83, 151));
